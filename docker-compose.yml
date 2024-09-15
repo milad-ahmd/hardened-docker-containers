@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongodb:
+    build: ./mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/data:/data/db
+
+  postgresql:
+    build: ./postgresql
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "443:443"
+      - "80:80"
+    volumes:
+      - ./nginx/certs:/etc/nginx/certs
